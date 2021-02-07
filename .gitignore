@@ -1,0 +1,17 @@
+*.classpath
+*.project
+*.jsdtscope
+*.prefs
+*.component
+*.container
+*.name
+*.MF
+*.class
+*.war
+*.jar
+*.ini
+.settings/org.eclipse.wst.common.project.facet.core.xml
+/target/
+/bin/
+.idea/
+clazz/
