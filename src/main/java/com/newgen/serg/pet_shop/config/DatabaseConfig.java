@@ -1,12 +1,11 @@
 package com.newgen.serg.pet_shop.config;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -38,14 +37,12 @@ public class DatabaseConfig {
 
     @Bean
     public DataSource dataSource() {
-        HikariConfig config = new HikariConfig();
-        config.setJdbcUrl(environment.getRequiredProperty("jdbc.url"));
-        config.setUsername(environment.getRequiredProperty("jdbc.username"));
-        config.setPassword(environment.getRequiredProperty("jdbc.password"));
-        config.setPoolName(environment.getRequiredProperty("jdbc.poolName"));
-        config.setMinimumIdle(2);
-        config.setMaximumPoolSize(10);
-        return new HikariDataSource(config);
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driver"));
+        dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+        dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
+        dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
+        return dataSource;
     }
 
     @Bean
