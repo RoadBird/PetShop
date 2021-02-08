@@ -29,7 +29,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
 	@ExceptionHandler(value = { Exception.class })
 	public ResponseEntity<Object> handleUnsuspectedException(Exception ex, WebRequest request) {
-		String message = "Something went wrong.";
+		String message = "Something went wrong. " + ex.getMessage();
 		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
 		return new ResponseEntity<Object>(new ErrorMessage(message, status), new HttpHeaders(), status);
 	}

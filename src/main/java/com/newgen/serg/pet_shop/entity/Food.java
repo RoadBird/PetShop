@@ -22,6 +22,6 @@ public class Food extends Product {
     @Column
     private String weight;
 
-    @Column
+    @Column(columnDefinition = "text")
     private String constituents;
 }
