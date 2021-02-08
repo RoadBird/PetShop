@@ -16,7 +16,7 @@ public class Pet extends Product {
     private String petType;
 
     @Column
-    private Integer age;
+    private String age;
 
     @Column
     private String gender;
